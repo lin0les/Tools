@@ -1,8 +1,24 @@
 #include <stdio.h>
 #include <ctype.h>
 
-int getch(void);
-void ungetch(int);
+#define SIZE 15
+
+int stack[SIZE];
+int sp = 0;
+
+int getch(void){
+    if(sp > 0)
+        return stack[--sp];
+    else
+        return getchar();
+}
+
+void ungetch(int ch){
+    if(sp >= SIZE)
+        printf("ungetch: too many characters\n");
+    else
+        stack[sp++] = ch;
+}
 
 int getint(int *pn){
     int c, sign;
@@ -15,8 +31,19 @@ int getint(int *pn){
     }
 
     sign = (c == '-') ? -1 : 1;
-    if(c == '+' || c == '-')
-        c = getch();
+
+    if(c == '+' || c == '-'){
+        int temp = getch();
+
+        if(!isdigit(temp)){
+            ungetch(temp);
+            ungetch(c);
+            *pn = 0;
+            return  0;
+        }
+
+        c = temp;
+    }
 
     for(*pn = 0; isdigit(c); c = getch())
         *pn = 10 * *pn + (c - '0');
@@ -30,6 +57,11 @@ int getint(int *pn){
 
 int main(int argc, char *argv[]){
 
+    int n;
+
+    getint(&n);
+
+    printf("%d\n", n);
 
     return 0;
 }
