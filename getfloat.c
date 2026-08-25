@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <stdbool.h>
+#include <math.h>
 
 #define MAX 20
 
@@ -46,7 +47,8 @@ int getfloat(float *pn){
     bool flag = false;
     double remainer = 0;
     int rc = 0;
-    for(int dot_count = 0, *pn = 0; isdigit(c) || c == '.'; c = getch()){
+    int dot_count = 0;
+    for(*pn = 0; isdigit(c) || c == '.'; c = getch()){
         if(c == '.')
             dot_count++;
         if(dot_count >=2){
@@ -54,8 +56,11 @@ int getfloat(float *pn){
             return 0;
         }
 
-        if(c == '.')
+        if(c == '.'){
             flag = true;
+            continue;
+        }
+            
 
         if(!flag)
             *pn = 10 * *pn + (c - '0');
@@ -65,7 +70,7 @@ int getfloat(float *pn){
         }
     }
 
-    *pn = (*pn + (remainer / rc)) * sign;
+    *pn = (*pn + (remainer / pow(10, rc))) * sign;
 
     if(c != EOF)
         ungetch(c);
