@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/*
+/* 
 int strlen(char *s){
     int n;
 
