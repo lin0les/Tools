@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 void reverse(char s[], int low, int high){
     if(low < high){
         char temp = s[high];

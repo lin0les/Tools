@@ -54,15 +54,3 @@ int getint(int *pn){
 
     return c;
 }
-
-int main(int argc, char *argv[]){
-
-    int n;
-
-    getint(&n);
-
-    printf("%d\n", n);
-
-    return 0;
-}
-

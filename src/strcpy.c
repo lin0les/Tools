@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 /* strcpy: copy t to s; array subscript version */
 // void strcpy(char *s, char *t){
 //     int i;
@@ -27,4 +25,5 @@
 void strcpy(char *s, char *t){
     while(*s++ = *t++)
         ;
+    printf("%s\n", "from local");
 }

@@ -78,14 +78,3 @@ int getfloat(float *pn){
     return c;
     
 }
-
-int main(int argc, char *argv[]){
-    float n;
-
-    getfloat(&n);
-
-    printf("%f\n", n);
-
-    return 0;
-}
-

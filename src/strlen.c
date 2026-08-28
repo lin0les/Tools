@@ -18,13 +18,3 @@ int strlen(char *s){
 
     return p - s;
 }
-
-int main(void){
-
-    char str[] = "Nihad";
-
-    printf("%s\n", str);
-    printf("%d\n", strlen(str));
-
-    return 0;
-}
