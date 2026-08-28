@@ -2,50 +2,82 @@
 #include "functions.h"
 
 int main(void){
+    char dest[50];
+    printf("%s\n", strncpy(dest, "hello", 0));
+    printf("%s\n", strncpy(dest, "hello", 1));
+    printf("%s\n", strncpy(dest, "hello", 2));
+    printf("%s\n", strncpy(dest, "hello", 3));
+    printf("%s\n", strncpy(dest, "hello", 4));
+    printf("%s\n", strncpy(dest, "hello", 5));
+    printf("%s\n", strncpy(dest, "hello", 6));
+    printf("%s\n", strncpy(dest, "hello", 10));
 
-    printf("%d\n", strend("Nihad Huseynov", "Huseynov"));        // 1
-    printf("%d\n", strend("Nihad Huseynov", "Nihad"));           // 0
-    printf("%d\n", strend("Nihad", "Nihad"));                    // 1
-    printf("%d\n", strend("Nihad", "Nihad Huseynov"));           // 0
+    printf("%s\n", strncpy(dest, "a", 0));
+    printf("%s\n", strncpy(dest, "a", 1));
+    printf("%s\n", strncpy(dest, "a", 2));
+    printf("%s\n", strncpy(dest, "a", 10));
 
-    printf("%d\n", strend("Nihad", "d"));                        // 1
-    printf("%d\n", strend("Nihad", "N"));                        // 0
-    printf("%d\n", strend("Nihad", "ad"));                       // 1
-    printf("%d\n", strend("Nihad", "had"));                      // 1
-    printf("%d\n", strend("Nihad", "ihad"));                     // 1
+    printf("%s\n", strncpy(dest, "abc", 0));
+    printf("%s\n", strncpy(dest, "abc", 1));
+    printf("%s\n", strncpy(dest, "abc", 2));
+    printf("%s\n", strncpy(dest, "abc", 3));
+    printf("%s\n", strncpy(dest, "abc", 4));
+    printf("%s\n", strncpy(dest, "abc", 10));
 
-    printf("%d\n", strend("SalamNihad", "Nihad"));              // 1
-    printf("%d\n", strend("SalamNihad", "Salam"));              // 0
-    printf("%d\n", strend("SalamNihad", "amN"));                // 0
-    printf("%d\n", strend("SalamNihad", "Nihad"));              // 1
+    printf("%s\n", strncpy(dest, "abcdef", 1));
+    printf("%s\n", strncpy(dest, "abcdef", 2));
+    printf("%s\n", strncpy(dest, "abcdef", 3));
+    printf("%s\n", strncpy(dest, "abcdef", 4));
+    printf("%s\n", strncpy(dest, "abcdef", 5));
+    printf("%s\n", strncpy(dest, "abcdef", 6));
+    printf("%s\n", strncpy(dest, "abcdef", 7));
+    printf("%s\n", strncpy(dest, "abcdef", 20));
 
-    printf("%d\n", strend("abcabc", "abc"));                    // 1
-    printf("%d\n", strend("abcabc", "bc"));                     // 1
-    printf("%d\n", strend("abcabc", "abcabc"));                 // 1
-    printf("%d\n", strend("abcabc", "a"));                      // 0
-    printf("%d\n", strend("abcabc", "ca"));                     // 0
+    printf("%s\n", strncpy(dest, "", 0));
+    printf("%s\n", strncpy(dest, "", 1));
+    printf("%s\n", strncpy(dest, "", 5));
+    printf("%s\n", strncpy(dest, "", 10));
 
-    printf("%d\n", strend("hello world", "world"));             // 1
-    printf("%d\n", strend("hello world", "hello"));             // 0
-    printf("%d\n", strend("hello world", "o world"));           // 1
-    printf("%d\n", strend("hello world", " world"));            // 1
+    printf("%s\n", strncpy(dest, "hello world", 1));
+    printf("%s\n", strncpy(dest, "hello world", 5));
+    printf("%s\n", strncpy(dest, "hello world", 6));
+    printf("%s\n", strncpy(dest, "hello world", 10));
+    printf("%s\n", strncpy(dest, "hello world", 11));
+    printf("%s\n", strncpy(dest, "hello world", 12));
+    printf("%s\n", strncpy(dest, "hello world", 20));
 
-    printf("%d\n", strend("test", "testing"));                  // 0
-    printf("%d\n", strend("test", "tests"));                    // 0
-    printf("%d\n", strend("test", "test"));                     // 1
-    printf("%d\n", strend("testing", "test"));                  // 0
+    printf("%s\n", strncpy(dest, "Nihad Huseynov", 1));
+    printf("%s\n", strncpy(dest, "Nihad Huseynov", 5));
+    printf("%s\n", strncpy(dest, "Nihad Huseynov", 6));
+    printf("%s\n", strncpy(dest, "Nihad Huseynov", 13));
+    printf("%s\n", strncpy(dest, "Nihad Huseynov", 14));
+    printf("%s\n", strncpy(dest, "Nihad Huseynov", 20));
 
-    printf("%d\n", strend("", "abc"));                           // 0
-    printf("%d\n", strend("abc", ""));                           // ?
-    printf("%d\n", strend("", ""));                              // ?
+    printf("%s\n", strncpy(dest, "1234567890", 3));
+    printf("%s\n", strncpy(dest, "1234567890", 5));
+    printf("%s\n", strncpy(dest, "1234567890", 10));
+    printf("%s\n", strncpy(dest, "1234567890", 15));
 
-    printf("%d\n", strend("AAAAA", "AAA"));                     // 1
-    printf("%d\n", strend("AAAAA", "AAAA"));                    // 1
-    printf("%d\n", strend("AAAAA", "AAAAAA"));                  // 0
+    printf("%s\n", strncpy(dest, "AAAAAA", 1));
+    printf("%s\n", strncpy(dest, "AAAAAA", 3));
+    printf("%s\n", strncpy(dest, "AAAAAA", 6));
+    printf("%s\n", strncpy(dest, "AAAAAA", 10));
 
-    printf("%d\n", strend("Nihad Huseynov ", "Huseynov"));      // 0
-    printf("%d\n", strend("Nihad Huseynov", "huseynov"));       // 0
-    printf("%d\n", strend("Nihad Huseynov", "HUSEYNOV"));       // 0
+    printf("%s\n", strncpy(dest, "!@#$%^&*()", 3));
+    printf("%s\n", strncpy(dest, "!@#$%^&*()", 5));
+    printf("%s\n", strncpy(dest, "!@#$%^&*()", 10));
+    printf("%s\n", strncpy(dest, "!@#$%^&*()", 20));
+
+    printf("%s\n", strncpy(dest, "   hello", 3));
+    printf("%s\n", strncpy(dest, "   hello", 8));
+    printf("%s\n", strncpy(dest, "hello   ", 5));
+    printf("%s\n", strncpy(dest, "hello   ", 8));
+
+    printf("%s\n", strncpy(dest, "This is a long string", 0));
+    printf("%s\n", strncpy(dest, "This is a long string", 5));
+    printf("%s\n", strncpy(dest, "This is a long string", 10));
+    printf("%s\n", strncpy(dest, "This is a long string", 20));
+    printf("%s\n", strncpy(dest, "This is a long string", 50));
 
     return 0;
 }
