@@ -8,6 +8,6 @@ void strcat(char s[], char t[]){
     while(s[i] != '\0')
         s++;
 
-    while((s[i++] = t[j++]) != '\0)
+    while((s[i++] = t[j++]) != '\0')
         ;
 }

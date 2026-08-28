@@ -1,24 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
-
-#define SIZE 15
-
-int stack[SIZE];
-int sp = 0;
-
-int getch(void){
-    if(sp > 0)
-        return stack[--sp];
-    else
-        return getchar();
-}
-
-void ungetch(int ch){
-    if(sp >= SIZE)
-        printf("ungetch: too many characters\n");
-    else
-        stack[sp++] = ch;
-}
+#include "functions.h"
 
 int getint(int *pn){
     int c, sign;
