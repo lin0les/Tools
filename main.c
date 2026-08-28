@@ -3,14 +3,13 @@
 
 int main(void){
 
-    char name[] = "Nihad";
-    char surname[] = "Huseynov";
-    
-    char temp[100];
+    char name[100] = "Nihad";
+    char surname[100] = "Huseynov";
 
-    strcpy(temp, name);
+    strcat(name, " ");
+    strcat(name, surname);
 
-    printf("%s\n", temp);
+    printf("%s\n", name);
 
     return 0;
 }
