@@ -1,6 +1,6 @@
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Wpedantic -fno-builtin -Iinclude
+CFLAGS = -g -Wall -Wextra -Wpedantic -fno-builtin -Iinclude
 
 LDFLAGS =
 LDLIBS = -lm
