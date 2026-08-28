@@ -11,6 +11,7 @@ void reverse(char s[], int low, int high);
 
 char *strncpy(char *s, char *t, int n);
 char *strncat(char *s, char *t, int n);
+int strncmp(char *s, char *t, int n);
 
 // Storage Functions
 char *alloc(int n);

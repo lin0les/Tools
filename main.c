@@ -2,148 +2,97 @@
 #include "functions.h"
 
 int main(void){
-    char dest[100];
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "world", 0));       // hello
+        printf("%d\n", strncmp("hello", "hello", 0));       // 0
+    printf("%d\n", strncmp("hello", "hello", 1));       // 0
+    printf("%d\n", strncmp("hello", "hello", 3));       // 0
+    printf("%d\n", strncmp("hello", "hello", 5));       // 0
+    printf("%d\n", strncmp("hello", "hello", 10));      // 0
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "world", 1));       // hellow
+    printf("%d\n", strncmp("hello", "hella", 0));       // 0
+    printf("%d\n", strncmp("hello", "hella", 1));       // 0
+    printf("%d\n", strncmp("hello", "hella", 4));       // 0
+    printf("%d\n", strncmp("hello", "hella", 5));       // positive
+    printf("%d\n", strncmp("hello", "hella", 10));      // positive
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "world", 2));       // hellowo
+    printf("%d\n", strncmp("hella", "hello", 4));       // 0
+    printf("%d\n", strncmp("hella", "hello", 5));       // negative
+    printf("%d\n", strncmp("hella", "hello", 10));      // negative
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "world", 3));       // hellowor
+    printf("%d\n", strncmp("abc", "abd", 1));           // 0
+    printf("%d\n", strncmp("abc", "abd", 2));           // 0
+    printf("%d\n", strncmp("abc", "abd", 3));           // negative
+    printf("%d\n", strncmp("abc", "abd", 10));          // negative
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "world", 4));       // helloworl
+    printf("%d\n", strncmp("abd", "abc", 1));           // 0
+    printf("%d\n", strncmp("abd", "abc", 2));           // 0
+    printf("%d\n", strncmp("abd", "abc", 3));           // positive
+    printf("%d\n", strncmp("abd", "abc", 10));          // positive
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "world", 5));       // helloworld
+    printf("%d\n", strncmp("abc", "abcdef", 0));        // 0
+    printf("%d\n", strncmp("abc", "abcdef", 1));        // 0
+    printf("%d\n", strncmp("abc", "abcdef", 2));        // 0
+    printf("%d\n", strncmp("abc", "abcdef", 3));        // 0
+    printf("%d\n", strncmp("abc", "abcdef", 4));        // negative
+    printf("%d\n", strncmp("abc", "abcdef", 10));       // negative
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "world", 6));       // helloworld
+    printf("%d\n", strncmp("abcdef", "abc", 0));        // 0
+    printf("%d\n", strncmp("abcdef", "abc", 1));        // 0
+    printf("%d\n", strncmp("abcdef", "abc", 2));        // 0
+    printf("%d\n", strncmp("abcdef", "abc", 3));        // 0
+    printf("%d\n", strncmp("abcdef", "abc", 4));        // positive
+    printf("%d\n", strncmp("abcdef", "abc", 10));       // positive
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "world", 10));      // helloworld
+    printf("%d\n", strncmp("", "", 0));                 // 0
+    printf("%d\n", strncmp("", "", 1));                 // 0
+    printf("%d\n", strncmp("", "", 10));                // 0
 
+    printf("%d\n", strncmp("", "abc", 0));              // 0
+    printf("%d\n", strncmp("", "abc", 1));              // negative
+    printf("%d\n", strncmp("", "abc", 10));             // negative
 
-    strcpy(dest, "");
-    printf("%s\n", strncat(dest, "hello", 0));       // 
+    printf("%d\n", strncmp("abc", "", 0));              // 0
+    printf("%d\n", strncmp("abc", "", 1));              // positive
+    printf("%d\n", strncmp("abc", "", 10));             // positive
 
-    strcpy(dest, "");
-    printf("%s\n", strncat(dest, "hello", 1));       // h
+    printf("%d\n", strncmp("a", "b", 1));               // negative
+    printf("%d\n", strncmp("b", "a", 1));               // positive
+    printf("%d\n", strncmp("a", "a", 1));               // 0
 
-    strcpy(dest, "");
-    printf("%s\n", strncat(dest, "hello", 3));       // hel
+    printf("%d\n", strncmp("Nihad", "Nihad", 5));       // 0
+    printf("%d\n", strncmp("Nihad", "Nihad", 10));      // 0
+    printf("%d\n", strncmp("Nihad", "Nihadx", 5));      // 0
+    printf("%d\n", strncmp("Nihad", "Nihadx", 6));      // negative
+    printf("%d\n", strncmp("Nihadx", "Nihad", 6));      // positive
 
-    strcpy(dest, "");
-    printf("%s\n", strncat(dest, "hello", 5));       // hello
+    printf("%d\n", strncmp("Nihad Huseynov", "Nihad Huseynov", 14));  // 0
+    printf("%d\n", strncmp("Nihad Huseynov", "Nihad Huseyn", 13));     // 0
+    printf("%d\n", strncmp("Nihad Huseynov", "Nihad Huseyn", 14));     // positive
 
-    strcpy(dest, "");
-    printf("%s\n", strncat(dest, "hello", 10));      // hello
+    printf("%d\n", strncmp("AAAAA", "AAAAB", 3));       // 0
+    printf("%d\n", strncmp("AAAAA", "AAAAB", 4));       // 0
+    printf("%d\n", strncmp("AAAAA", "AAAAB", 5));       // negative
 
+    printf("%d\n", strncmp("AAAAB", "AAAAA", 3));       // 0
+    printf("%d\n", strncmp("AAAAB", "AAAAA", 4));       // 0
+    printf("%d\n", strncmp("AAAAB", "AAAAA", 5));       // positive
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "", 0));            // hello
+    printf("%d\n", strncmp("12345", "12346", 4));       // 0
+    printf("%d\n", strncmp("12345", "12346", 5));       // negative
+    printf("%d\n", strncmp("12346", "12345", 5));       // positive
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "", 5));            // hello
+    printf("%d\n", strncmp("hello world", "hello world!", 11)); // 0
+    printf("%d\n", strncmp("hello world", "hello world!", 12)); // negative
+    printf("%d\n", strncmp("hello world!", "hello world", 12)); // positive
 
-    strcpy(dest, "hello");
-    printf("%s\n", strncat(dest, "", 10));           // hello
+    printf("%d\n", strncmp("abcabc", "abcabd", 3));     // 0
+    printf("%d\n", strncmp("abcabc", "abcabd", 5));     // negative
+    printf("%d\n", strncmp("abcabd", "abcabc", 5));     // positive
 
-
-    strcpy(dest, "a");
-    printf("%s\n", strncat(dest, "b", 0));            // a
-
-    strcpy(dest, "a");
-    printf("%s\n", strncat(dest, "b", 1));            // ab
-
-    strcpy(dest, "a");
-    printf("%s\n", strncat(dest, "b", 10));           // ab
-
-
-    strcpy(dest, "abc");
-    printf("%s\n", strncat(dest, "def", 1));          // abcd
-
-    strcpy(dest, "abc");
-    printf("%s\n", strncat(dest, "def", 2));          // abcde
-
-    strcpy(dest, "abc");
-    printf("%s\n", strncat(dest, "def", 3));          // abcdef
-
-    strcpy(dest, "abc");
-    printf("%s\n", strncat(dest, "def", 10));         // abcdef
-
-
-    strcpy(dest, "Nihad");
-    printf("%s\n", strncat(dest, " Huseynov", 0));    // Nihad
-
-    strcpy(dest, "Nihad");
-    printf("%s\n", strncat(dest, " Huseynov", 1));    // Nihad 
-
-    strcpy(dest, "Nihad");
-    printf("%s\n", strncat(dest, " Huseynov", 6));    // Nihad Husey
-
-    strcpy(dest, "Nihad");
-    printf("%s\n", strncat(dest, " Huseynov", 9));    // Nihad Huseynov
-
-    strcpy(dest, "Nihad");
-    printf("%s\n", strncat(dest, " Huseynov", 20));   // Nihad Huseynov
-
-
-    strcpy(dest, "hello ");
-    printf("%s\n", strncat(dest, "world", 1));        // hello w
-
-    strcpy(dest, "hello ");
-    printf("%s\n", strncat(dest, "world", 3));        // hello wor
-
-    strcpy(dest, "hello ");
-    printf("%s\n", strncat(dest, "world", 5));        // hello world
-
-    strcpy(dest, "hello ");
-    printf("%s\n", strncat(dest, "world", 10));       // hello world
-
-
-    strcpy(dest, "AAAAA");
-    printf("%s\n", strncat(dest, "BBB", 0));          // AAAAA
-
-    strcpy(dest, "AAAAA");
-    printf("%s\n", strncat(dest, "BBB", 1));          // AAAAAB
-
-    strcpy(dest, "AAAAA");
-    printf("%s\n", strncat(dest, "BBB", 2));          // AAAAABB
-
-    strcpy(dest, "AAAAA");
-    printf("%s\n", strncat(dest, "BBB", 3));          // AAAAABBB
-
-    strcpy(dest, "AAAAA");
-    printf("%s\n", strncat(dest, "BBB", 10));         // AAAAABBB
-
-
-    strcpy(dest, "12345");
-    printf("%s\n", strncat(dest, "67890", 2));        // 1234567
-
-    strcpy(dest, "12345");
-    printf("%s\n", strncat(dest, "67890", 5));        // 1234567890
-
-    strcpy(dest, "12345");
-    printf("%s\n", strncat(dest, "67890", 10));       // 1234567890
-
-
-    strcpy(dest, "hello world");
-    printf("%s\n", strncat(dest, "!!!", 1));          // hello world!
-
-    strcpy(dest, "hello world");
-    printf("%s\n", strncat(dest, "!!!", 2));          // hello world!!
-
-    strcpy(dest, "hello world");
-    printf("%s\n", strncat(dest, "!!!", 3));          // hello world!!!
-
-    strcpy(dest, "hello world");
-    printf("%s\n", strncat(dest, "!!!", 10));         // hello world!!!
+    printf("%d\n", strncmp("test", "testing", 4));      // 0
+    printf("%d\n", strncmp("test", "testing", 5));      // negative
+    printf("%d\n", strncmp("testing", "test", 4));      // 0
+    printf("%d\n", strncmp("testing", "test", 5));      // positive
 
     return 0;
 }
