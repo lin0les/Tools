@@ -20,5 +20,6 @@ void afree(char *p);
 // Input converters
 int getfloat(float *pn);
 int getint(int *pn);
+int my_getline(char *s, int n);
 
 #endif
