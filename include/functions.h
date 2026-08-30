@@ -3,6 +3,7 @@
 
 // String Functions
 char *itoa(int n, char *s);
+int atoi(char *s);
 void strcat(char s[], char t[]);
 int strcmp(char *s, char *t);
 void strcpy(char *s, char *t);
