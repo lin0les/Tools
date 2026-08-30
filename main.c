@@ -2,9 +2,12 @@
 #include "functions.h"
 
 int main(void){
-        int i;
-        char s[100];
-        i = my_getline(s, 10);
-        printf("%d - %s\n", i, s);
-        return 0;
+    int i;
+    char s[] = "-7281";
+
+    i = atoi(s);
+
+
+    printf("%d - %s\n", i, s);
+    return 0;
 }
