@@ -1,26 +1,22 @@
 #include <stdio.h>
 #include <string.h>
 
-#define ALLOCSIZE 10000
-
-static char allocbuf[ALLOCSIZE];
-static char *allocp = allocbuf;
-char *alloc(int n);
-void afree(char *p);
-
+#define BUFSIZE 10000
 #define MAXLINES 5000
 #define MAXLEN 1000
 char *lineptr[MAXLINES];
 
 int mygetline(char *, int);
-int readlines(char *lineptr[], int nlines);
+int readlines(char *lineptr[], char *buffer);
 void writelines(char *lineptr[], int nlines);
 void qsort(char *v[], int left, int right);
 
 int main(){
     int nlines;
 
-    if((nlines = readlines(lineptr, MAXLINES)) >= 0){
+    char buffer[BUFSIZE];
+
+    if((nlines = readlines(lineptr, buffer)) >= 0){
         qsort(lineptr, 0, nlines - 1);
         writelines(lineptr, nlines);
         return 0;
@@ -30,19 +26,27 @@ int main(){
     }
 }
 
-int readlines(char *lineptr[], int maxlines){
-    int len, nlines;
-    char *p, line[MAXLEN];
+int readlines(char *lineptr[], char *buffer){
+    int len;
+    int nlines = 0;
+    int used = 0;
+    char *p;
 
-    nlines = 0;
-    while((len = mygetline(line, MAXLEN)) > 0)
-        if(nlines >= maxlines || (p = alloc(len+1)) == NULL)
-            return -1;
-        else{
-            // line[len-1] = '\0';
-            strcpy(p, line);
-            lineptr[nlines++] = p;
-        }
+    while(nlines < MAXLINES && used < BUFSIZE){
+        p = buffer + used;
+        len = mygetline(p, MAXLEN);
+        
+        if(len <= 0)
+            break;
+
+        lineptr[nlines++] = p;
+
+        used += len + 1;
+    }
+
+    if(nlines >= MAXLINES || used >= BUFSIZE)
+        return -1;
+
     return nlines;
 }
 
@@ -95,17 +99,4 @@ void swap(char *v[], int i, int j){
     temp = v[i];
     v[i] = v[j];
     v[j] = temp;
-}
-
-char *alloc(int n){
-    if(allocbuf + ALLOCSIZE - allocp >= n){
-        allocp += n;
-        return allocp -n;
-    } else
-        return 0;
-}
-
-void afree(char *p){
-    if(p >= allocbuf && p < allocbuf + ALLOCSIZE)
-        allocp = p;
 }
