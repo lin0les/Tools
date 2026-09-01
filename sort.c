@@ -36,10 +36,10 @@ int readlines(char *lineptr[], int maxlines){
 
     nlines = 0;
     while((len = mygetline(line, MAXLEN)) > 0)
-        if(nlines >= maxlines || (p = alloc(len)) == NULL)
+        if(nlines >= maxlines || (p = alloc(len+1)) == NULL)
             return -1;
         else{
-            line[len-1] = '\0';
+            // line[len-1] = '\0';
             strcpy(p, line);
             lineptr[nlines++] = p;
         }
@@ -64,7 +64,7 @@ int mygetline(char *line, int len){
         counter++;
     }
 
-    line = '\0';
+    *line = '\0';
 
     return counter;
 }
