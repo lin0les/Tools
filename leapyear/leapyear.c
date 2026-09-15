@@ -5,8 +5,13 @@ static char daytab[2][13] = {
 
 int day_of_year(int year, int month, int day){
     int i, leap; 
-
+    
     leap = year%4 == 0 && year%100 != 0 && year%400 == 0;
+
+    if(year<1)
+        return -1;
+    else if(month<1 || month>12)
+        return -2;
 
     for(i=1; i < month; i++)
         day += daytab[leap][i];
@@ -14,10 +19,15 @@ int day_of_year(int year, int month, int day){
     return day;
 }
 
-void month_day(int year, int yearday, int *pmonth, int *pday){
+int month_day(int year, int yearday, int *pmonth, int *pday){
     int i, leap; 
 
     leap = year%4 == 0 && year%100 != 0 && year%400 == 0;
+
+    if(year<1)
+        return -1;
+    else if(yearday<1 || yearday>366)
+        return -2;
 
     for(i=1; yearday > daytab[leap][i]; i++)
         yearday -= daytab[leap][i];
