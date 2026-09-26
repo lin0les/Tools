@@ -4,7 +4,7 @@ void entab(){
     int pos=1, c;
     int spaces=0, tabs=0;
 
-    while((c=getch()) != EOF){
+    while((c=getchar()) != EOF){
         if(c == ' '){
             if(pos%TS != 0){
                 ++spaces;
@@ -22,8 +22,9 @@ void entab(){
                 spaces=0;
                 pos=pos+(TS-(pos-1)%TS)-1;
             }
-            for(int i=0; i < spaces; i++)
+            for(int i=0; i < spaces; i++){
                 putchar(' ');
+            }
             spaces=0;
 
             putchar(c);

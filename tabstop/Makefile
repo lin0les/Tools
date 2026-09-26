@@ -4,9 +4,7 @@ CFLAGS  = -Wall -Wextra -Werror -std=c11 -Iinclude -g
 TARGET  = tabs
 
 SRC     = main.c \
-          src/buff.c \
-          src/detab.c \
-          src/entab.c 
+          src/entab.c
 
 OBJ     = $(SRC:.c=.o)
 
