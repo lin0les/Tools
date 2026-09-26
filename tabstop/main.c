@@ -1,6 +1,7 @@
 #include "tabstop.h"
 
 int main(){
-    entab();
+    detab();
+//    entab();
     return 0;
 }

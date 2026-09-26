@@ -4,7 +4,8 @@ CFLAGS  = -Wall -Wextra -Werror -std=c11 -Iinclude -g
 TARGET  = tabs
 
 SRC     = main.c \
-          src/entab.c
+          src/entab.c \
+          src/detab.c
 
 OBJ     = $(SRC:.c=.o)
 
@@ -21,4 +22,4 @@ $(TARGET): $(OBJ)
 clean:
 	rm -f $(OBJ) $(TARGET)
 
-re: clean all
+re:	clean all
