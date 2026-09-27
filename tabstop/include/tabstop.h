@@ -2,9 +2,8 @@
 #define TABSTOP_H
 
 #include <stdio.h>
-#define TS 8
 
-void detab(void);
-void entab(void);
+void detab(int *, int);
+void entab(int *, int);
 
 #endif

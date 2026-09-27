@@ -1,18 +1,20 @@
 #include "tabstop.h"
 
-void detab(void){
-    int c, spaces, pos=1;
+void detab(int *tabList, int len){
+    int c, spaces, pos=0;
+    int tabFinder=0;
 
     while((c=getchar()) != EOF){
         if(c == '\t'){
-            spaces=TS-(pos-1)%TS;
+            spaces=tabList[tabFinder%len]-pos%tabList[tabFinder%len];
+            tabFinder++;
             for(int i=0; i < spaces; i++){
                 putchar(' ');
                 ++pos;
             }
         } else if(c == '\n'){
             putchar(c);
-            pos=1;
+            pos=0;
         } else{
             putchar(c);
             ++pos;

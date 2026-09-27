@@ -1,12 +1,14 @@
 #include "tabstop.h"
 
-void entab(){
-    int pos=1, c;
+void entab(int *tabList, int len){
+    int pos=0, c;
     int spaces=0, tabs=0;
+    int tabFinder=0;
 
     while((c=getchar()) != EOF){
         if(c == ' '){
-            if(pos%TS != 0){
+            int tab=tabList[tabFinder%len];
+            if((pos+1)%tab != 0){
                 ++spaces;
             } else{
                 spaces=0;
@@ -20,7 +22,9 @@ void entab(){
 
             if(c == '\t'){
                 spaces=0;
-                pos=pos+(TS-(pos-1)%TS)-1;
+                int tab=tabList[tabFinder%len];
+                pos=pos+(tab-pos%tab);
+                tabFinder++;
             }
             for(int i=0; i < spaces; i++){
                 putchar(' ');
