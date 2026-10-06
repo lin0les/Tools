@@ -9,9 +9,15 @@ int main(int argc, char *argv[]){
     int n = DEFAULT; /* default value of output lines */
     int nlines; /*  number of lines read */
 
-    if(argc == 2){
-        ++argv;
-        n = atoi(++argv[0]);
+    if(argc > 2){
+        printf("Usage: %s [-N]\n", *argv);
+        return 1;
+    }else if(argc == 2){
+        if(*argv[1] != '-'){
+            printf("Usage: %s [-N]\n", *argv);
+            return 1;
+        }
+        n = atoi(++argv[1]);
     }
 
     if((nlines = readlines(lineptr, MAXLINES)) >= 0){
